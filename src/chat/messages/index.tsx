@@ -1,5 +1,6 @@
 import React from "react";
 import { Message } from "../types";
+import { formatDate } from "../utils/date";
 import styles from "./Messages.module.css";
 
 const ChatMessage: React.FC<{
@@ -15,7 +16,9 @@ const ChatMessage: React.FC<{
       >
         {!isAuthorMessage ? <div>{message.author}</div> : null}
         <p>{message.message}</p>
-        <div>{message?.timestamp}</div>
+        <div>
+          {message?.timestamp ? formatDate(new Date(message.timestamp)) : "-"}
+        </div>
       </div>
     </div>
   );
