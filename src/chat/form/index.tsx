@@ -3,9 +3,13 @@ import styles from "./Form.module.css";
 
 interface ChatFormProps {
   onSubmit: (message: string) => void;
+  isSendDisabled?: boolean;
 }
 
-const ChatForm: React.FC<ChatFormProps> = ({ onSubmit }) => {
+const ChatForm: React.FC<ChatFormProps> = ({
+  onSubmit,
+  isSendDisabled = false,
+}) => {
   const [message, setMessage] = React.useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +36,7 @@ const ChatForm: React.FC<ChatFormProps> = ({ onSubmit }) => {
       </div>
       <button
         type="submit"
-        disabled={message.length === 0}
+        disabled={message.length === 0 || isSendDisabled}
         className={styles.btn}
       >
         Send

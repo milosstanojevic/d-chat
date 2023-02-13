@@ -2,6 +2,6 @@ export interface Message {
   _id?: string;
   message: string;
   author: string;
-  timestamp?: number;
+  timestamp: number | string;
   token?: string;
 }
